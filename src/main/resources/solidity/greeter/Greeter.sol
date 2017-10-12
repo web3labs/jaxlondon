@@ -23,6 +23,10 @@ contract greeter is mortal {
         greeting = _greeting;
     }
 
+    function newGreeting(string) _greeting) public {
+        greeting = _greeting;
+    }
+
     /* main function */
     function greet() constant returns (string) {
         return greeting;
