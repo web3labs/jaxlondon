@@ -23,7 +23,7 @@ contract greeter is mortal {
         greeting = _greeting;
     }
 
-    function newGreeting(string) _greeting) public {
+    function newGreeting(string _greeting) public {
         greeting = _greeting;
     }
 

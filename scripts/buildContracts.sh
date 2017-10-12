@@ -7,6 +7,7 @@ baseDir="../src/main/resources/solidity"
 
 targets="
 greeter/Greeter
+erc20/jax/JaxToken
 "
 
 for target in ${targets}; do
