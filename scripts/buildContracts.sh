@@ -22,13 +22,13 @@ for target in ${targets}; do
             ${dirName}/${fileName}.sol -o ${dirName}/build/
     echo "Complete"
 
-    echo "Generating contract bindings"
-    web3j solidity generate \
-        ${dirName}/build/${fileName}.bin \
-        ${dirName}/build/${fileName}.abi \
-        -p io.blk.contracts.generated \
-        -o ../../java/ > /dev/null
-    echo "Complete"
+#    echo "Generating contract bindings"
+#    web3j solidity generate \
+#        ${dirName}/build/greeter.bin \
+#        ${dirName}/build/greeter.abi \
+#        -p io.blk.contracts.generated \
+#        -o ../../java/ > /dev/null
+#    echo "Complete"
 
     cd -
 done
