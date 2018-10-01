@@ -1,17 +1,12 @@
 package io.blk.jaxlondon;
 
-import java.math.BigInteger;
-
 import io.blk.contracts.generated.Greeter;
 
-import org.web3j.abi.datatypes.Utf8String;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Contract;
-import org.web3j.tx.ManagedTransaction;
 import org.web3j.tx.gas.DefaultGasProvider;
 
 public class HelloBlockchainWorld {
