@@ -1,16 +1,12 @@
 package io.blk.jaxlondon;
 
-import java.math.BigInteger;
-
 import io.blk.contracts.generated.JaxToken;
 
-import org.web3j.abi.datatypes.Address;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Contract;
-import org.web3j.tx.ManagedTransaction;
+import org.web3j.tx.gas.DefaultGasProvider;
 
 
 public class JaxTokenExample {
@@ -25,11 +21,11 @@ public class JaxTokenExample {
                         "<walletfile>");
 
         JaxToken jaxToken = JaxToken.deploy(
-                web3, credentials, ManagedTransaction.GAS_PRICE, Contract.GAS_LIMIT, BigInteger.ZERO
-        ).get();
+                web3, credentials, DefaultGasProvider.GAS_PRICE, DefaultGasProvider.GAS_LIMIT
+        ).send();
 
         System.out.println(
-                jaxToken.balanceOf(new Address(credentials.getAddress())).get().getValue());
+                jaxToken.balanceOf(credentials.getAddress()).send());
 
     }
 }

@@ -1,17 +1,13 @@
 package io.blk.jaxlondon;
 
-import java.math.BigInteger;
-
 import io.blk.contracts.generated.Greeter;
 
-import org.web3j.abi.datatypes.Utf8String;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Contract;
-import org.web3j.tx.ManagedTransaction;
+import org.web3j.tx.gas.DefaultGasProvider;
 
 public class HelloBlockchainWorld {
 
@@ -25,18 +21,19 @@ public class HelloBlockchainWorld {
                         "<walletfile>.json");
 
         Greeter contract = Greeter.deploy(
-                web3, credentials, ManagedTransaction.GAS_PRICE, Contract.GAS_LIMIT,
-                BigInteger.ZERO, new Utf8String("Hello blockchain world!"))
-                .get();
+                web3, credentials,
+                DefaultGasProvider.GAS_PRICE,
+                DefaultGasProvider.GAS_LIMIT,
+                "Hello blockchain world!").send();
 
-        Utf8String greeting = contract.greet().get();
-        System.out.println(greeting.getValue());
+        String greeting = contract.greet().send();
+        System.out.println(greeting);
 
         TransactionReceipt transactionReceipt =
-                contract.newGreeting(new Utf8String("Hello new blockchain world!")).get();
+                contract.newGreeting("Hello new blockchain world!").send();
         System.out.println(transactionReceipt.getTransactionHash());
 
-        Utf8String newGreeting = contract.greet().get();
-        System.out.println(newGreeting.getValue());
+        String newGreeting = contract.greet().send();
+        System.out.println(newGreeting);
     }
 }

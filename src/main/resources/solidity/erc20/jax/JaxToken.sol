@@ -21,7 +21,7 @@ contract JaxToken is StandardToken {
   /**
    * @dev Contructor that gives msg.sender all of existing tokens.
    */
-  function SimpleToken() {
+  constructor() public {
     totalSupply = INITIAL_SUPPLY;
     balances[msg.sender] = INITIAL_SUPPLY;
   }
