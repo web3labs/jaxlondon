@@ -14,6 +14,7 @@ import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
+import org.web3j.tx.gas.ContractGasProvider;
 
 /**
  * <p>Auto generated code.
@@ -39,6 +40,10 @@ public class Greeter extends Contract {
 
     protected Greeter(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    protected Greeter(String contractAddress, Web3j web3j, TransactionManager transactionManager, ContractGasProvider gasProvider) {
+        super(BINARY, contractAddress, web3j, transactionManager, gasProvider);
     }
 
     public RemoteCall<TransactionReceipt> kill() {
